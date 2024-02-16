@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: "Father"
+    name: father
 logging:
   pattern:
     level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
@@ -16,8 +16,7 @@ management:
     web:
       exposure:
         include: prometheus
-
-
+#        include: health, info, metrics, prometheus
   metrics:
     distribution:
       percentiles-histogram:

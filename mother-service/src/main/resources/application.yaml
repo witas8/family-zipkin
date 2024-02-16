@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: "Mother"
+    name: mother
 
 logging:
   pattern:
@@ -16,9 +16,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: prometheus
-
-
+        include: health, info, metrics, prometheus
   metrics:
     distribution:
       percentiles-histogram:

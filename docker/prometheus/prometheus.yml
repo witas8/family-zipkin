@@ -1,0 +1,30 @@
+global:
+  scrape_interval: 2s
+  evaluation_interval: 2s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: [ 'host.docker.internal:9090','host.docker.internal:8081','host.docker.internal:8082', 'host.docker.internal:8083' ]
+  - job_name: 'child job'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 2s
+    static_configs:
+      - targets: [ 'host.docker.internal:8081' ] ## only for demo purposes don't use host.docker.internal in production
+        labels:
+          application: "Child Application"
+  - job_name: 'father job'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 2s
+    static_configs:
+      - targets: [ 'host.docker.internal:8082' ]
+        labels:
+          application: "Father Application"
+
+  - job_name: 'mother job'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 2s
+    static_configs:
+      - targets: [ 'host.docker.internal:8083' ]
+        labels:
+          application: "Mother Application"
