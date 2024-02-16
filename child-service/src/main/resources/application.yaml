@@ -2,7 +2,7 @@ server:
   port: 8081
 spring:
   application:
-    name: "Child"
+    name: child
 
 logging:
   pattern:
@@ -15,12 +15,11 @@ management:
   endpoints:
     web:
       exposure:
-        include: prometheus
-
-
-  metrics:
-    distribution:
-      percentiles-histogram:
-        http:
-          server:
-            requests: true
+        include: health, info, metrics, prometheus
+  management:
+    metrics:
+      distribution:
+        percentiles-histogram:
+          http:
+            server:
+              requests: true

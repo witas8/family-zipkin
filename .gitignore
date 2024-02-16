@@ -1,0 +1,4 @@
+# Project exclude paths
+/child-service/target/
+/father-service/target/
+/mother-service/target/
